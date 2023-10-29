@@ -26,11 +26,23 @@
             <th>Cliente</th>
             <th>Entregue por</th>
             <th>Recebido por</th>
+            <th>Data de Cadastro</th>
             <th>Selecionar</th>
         </tr>
     </thead>
 
     <tbody>
-
+        <tr *ngFor="let e of equipamentos">
+            <td>{{e.codigo}}</td>
+            <td>{{e.nome}}</td>
+            <td>{{e.descricao}}</td>
+            <td>{{e.serialNumber}}</td>
+            <td>{{e.informacoesAdicionais}}</td>
+            <td>{{e.cliente}}</td>
+            <td>{{e.entreguePor}}</td>
+            <td>{{e.recebidoPor}}</td>
+            <td>{{e.dataCriacao}}</td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
