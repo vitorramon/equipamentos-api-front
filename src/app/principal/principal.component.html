@@ -1,21 +1,23 @@
 <form>
-    <img src="/assets/cliente.png" alt="">
+    <img src="/assets/imgs/Equipamento.png" alt="">
 
-    <input type="text" placeholder="Nome" class="form-control">
-    <input type="text" placeholder="Descrição" class="form-control">
-    <input type="text" placeholder="Número de Série" class="form-control">
-    <input type="text" placeholder="Informações Adicionais" class="form-control">
-    <input type="text" placeholder="Cliente" class="form-control">
-    <input type="text" placeholder="Entregue por" class="form-control">
-    <input type="text" placeholder="Recebido por" class="form-control">
+    <input type="text" placeholder="Nome" class="form-control" name="nome" [(ngModel)]="equipamento.nome">
+    <input type="text" placeholder="Descrição" class="form-control" name="descricao" [(ngModel)]="equipamento.descricao">
+    <input type="text" placeholder="Número de Série" class="form-control" name="serialNumber" [(ngModel)]="equipamento.serialNumber">
+    <input type="text" placeholder="Informações Adicionais" class="form-control" name="informacoesAdicionais" [(ngModel)]="equipamento.informacoesAdicionais">
+    <input type="text" placeholder="Cliente" class="form-control" name="cliente" [(ngModel)]="equipamento.cliente">
+    <input type="text" placeholder="Entregue por" class="form-control" name="entreguePor" [(ngModel)]="equipamento.entreguePor">
+    <input type="text" placeholder="Recebido por" class="form-control" name="recebidoPor" [(ngModel)]="equipamento.recebidoPor">
 
-    <input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary">
-    <input type="button" value="Alterar" *ngIf="!btnCadastro" class="btn btn-warning">
-    <input type="button" value="Remover" *ngIf="!btnCadastro" class="btn btn-danger">
-    <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary">
+    <input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary" (click)="cadastrar()">
+    <input type="button" value="Alterar" *ngIf="!btnCadastro" class="btn btn-warning" (click)="alterar()">
+    <input type="button" value="Remover" *ngIf="!btnCadastro" class="btn btn-danger" (click)="remover()">
+    <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary" (click)="cancelar()">
 </form>
 
-<table class="table">
+<!--<h1>{{equipamento | json}}</h1> -->
+
+<table class="table" *ngIf="tabela">
     <thead>
         <tr>
             <th>#</th>
@@ -32,8 +34,8 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let e of equipamentos">
-            <td>{{e.codigo}}</td>
+        <tr *ngFor="let e of equipamentos; index as i">
+            <td>{{i+1}}</td>
             <td>{{e.nome}}</td>
             <td>{{e.descricao}}</td>
             <td>{{e.serialNumber}}</td>
@@ -42,7 +44,7 @@
             <td>{{e.entreguePor}}</td>
             <td>{{e.recebidoPor}}</td>
             <td>{{e.dataCriacao}}</td>
-            <td></td>
+            <td><button class="btn btn-success" (click)="selecionarEquipamento(i)">Selecionar</button></td>
         </tr>
     </tbody>
 </table>

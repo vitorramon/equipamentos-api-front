@@ -19,4 +19,20 @@ export class EquipamentoService {
   listar():Observable<Equipamento[]>{
     return this.http.get<Equipamento[]>(`${this.url}/listar`);
   }
+
+  // Método para cadastrar equipamentos
+  cadastrar(obj:Equipamento):Observable<Equipamento>{
+    return this.http.post<Equipamento>(`${this.url}/cadastrar`, obj);
+  }
+
+  // Método para editar equipamentos
+  alterar(obj:Equipamento):Observable<Equipamento>{
+    return this.http.put<Equipamento>(`${this.url}/alterar`, obj);
+  }
+
+  // Método para remover equipamentos
+  remover(codigo:number):Observable<void>{
+    return this.http.delete<void>(`${this.url}/remover` + '/' + codigo);
+  }
+
 }
