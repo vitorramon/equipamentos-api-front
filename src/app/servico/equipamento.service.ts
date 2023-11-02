@@ -9,7 +9,7 @@ import { Equipamento } from '../modelo/Equipamento';
 
 export class EquipamentoService {
 
-  private url:string = 'http://localhost:8080';
+  private url:string = 'http://192.168.3.6:8080';
 
   //Responsável por realizar requisições à API
   constructor(private http:HttpClient) { }
